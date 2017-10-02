@@ -1,11 +1,11 @@
 ## Table of Contents
-* [Contracts](#smart-contracts)
+* [Smart Contracts](#smart-contracts)
 
 # Smart Contracts
 Dala smart contracts and tests
 
 ## token
-contracts/CentrallyIssuedToken.sol
+[CentrallyIssuedToken.sol] (https://github.com/GetDala/contracts/CentrallyIssuedToken.sol)
 
 ## Crowdsale
-contracts/AllocatedCrowdsale.sol
+[AllocatedCrowdsale.sol] (https://github.com/GetDala/contracts/AllocatedCrowdsale.sol)
