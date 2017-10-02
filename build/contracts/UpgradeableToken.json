@@ -1,0 +1,354 @@
+{
+  "contract_name": "UpgradeableToken",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "upgrade",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "upgradeAgent",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "upgradeMaster",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getUpgradeState",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "canUpgrade",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalUpgraded",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "agent",
+          "type": "address"
+        }
+      ],
+      "name": "setUpgradeAgent",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "name": "_spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "name": "remaining",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isToken",
+      "outputs": [
+        {
+          "name": "weAre",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "master",
+          "type": "address"
+        }
+      ],
+      "name": "setUpgradeMaster",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_upgradeMaster",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Upgrade",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "agent",
+          "type": "address"
+        }
+      ],
+      "name": "UpgradeAgentSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Minted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b604051602080610ad9833981016040528080519150505b60038054600160a060020a031916600160a060020a0383161790555b505b610a86806100536000396000f300606060405236156100bf5763ffffffff60e060020a600035041663095ea7b381146100c457806318160ddd146100fa57806323b872dd1461011f57806345977d031461015b5780635de4ccb014610173578063600440cb146101a257806370a08231146101d15780638444b391146102025780639738968c14610239578063a9059cbb14610260578063c752ff6214610296578063d7e7088a146102bb578063dd62ed3e146102dc578063eefa597b14610239578063ffeb7d751461033a575b600080fd5b34156100cf57600080fd5b6100e6600160a060020a036004351660243561035b565b604051901515815260200160405180910390f35b341561010557600080fd5b61010d610404565b60405190815260200160405180910390f35b341561012a57600080fd5b6100e6600160a060020a036004358116906024351660443561040a565b604051901515815260200160405180910390f35b341561016657600080fd5b61017160043561051f565b005b341561017e57600080fd5b61018661068b565b604051600160a060020a03909116815260200160405180910390f35b34156101ad57600080fd5b61018661069a565b604051600160a060020a03909116815260200160405180910390f35b34156101dc57600080fd5b61010d600160a060020a03600435166106a9565b60405190815260200160405180910390f35b341561020d57600080fd5b6102156106c8565b6040518082600481111561022557fe5b60ff16815260200191505060405180910390f35b341561024457600080fd5b6100e6610715565b604051901515815260200160405180910390f35b341561026b57600080fd5b6100e6600160a060020a036004351660243561071b565b604051901515815260200160405180910390f35b34156102a157600080fd5b61010d6107db565b60405190815260200160405180910390f35b34156102c657600080fd5b610171600160a060020a03600435166107e1565b005b34156102e757600080fd5b61010d600160a060020a036004358116906024351661099a565b60405190815260200160405180910390f35b341561024457600080fd5b6100e6610715565b604051901515815260200160405180910390f35b341561034557600080fd5b610171600160a060020a03600435166109cd565b005b600081158015906103905750600160a060020a0333811660009081526002602090815260408083209387168352929052205415155b1561039a57600080fd5b600160a060020a03338116600081815260026020908152604080832094881680845294909152908190208590557f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259085905190815260200160405180910390a35060015b92915050565b60005481565b600160a060020a038084166000908152600260209081526040808320338516845282528083205493861683526001909152812054909190610451908463ffffffff610a2916565b600160a060020a038086166000908152600160205260408082209390935590871681522054610486908463ffffffff610a4316565b600160a060020a0386166000908152600160205260409020556104af818463ffffffff610a4316565b600160a060020a03808716600081815260026020908152604080832033861684529091529081902093909355908616917fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9086905190815260200160405180910390a3600191505b509392505050565b60006105296106c8565b905060035b81600481111561053a57fe5b1480610552575060045b81600481111561055057fe5b145b151561055d57600080fd5b81151561056957600080fd5b600160a060020a033316600090815260016020526040902054610592908363ffffffff610a4316565b600160a060020a033316600090815260016020526040812091909155546105bf908363ffffffff610a4316565b6000556005546105d5908363ffffffff610a2916565b600555600454600160a060020a031663753e88e5338460405160e060020a63ffffffff8516028152600160a060020a0390921660048301526024820152604401600060405180830381600087803b151561062e57600080fd5b6102c65a03f1151561063f57600080fd5b5050600454600160a060020a03908116915033167f7e5c344a8141a805725cb476f76c6953b842222b967edd1f78ddb6e8b3f397ac8460405190815260200160405180910390a35b5050565b600454600160a060020a031681565b600354600160a060020a031681565b600160a060020a0381166000908152600160205260409020545b919050565b60006106d2610715565b15156106e05750600161070f565b600454600160a060020a031615156106fa5750600261070f565b600554151561070b5750600361070f565b5060045b5b5b5b90565b60015b90565b600160a060020a033316600090815260016020526040812054610744908363ffffffff610a4316565b600160a060020a033381166000908152600160205260408082209390935590851681522054610779908363ffffffff610a2916565b600160a060020a0380851660008181526001602052604090819020939093559133909116907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9085905190815260200160405180910390a35060015b92915050565b60055481565b6107e9610715565b15156107f457600080fd5b600160a060020a038116151561080957600080fd5b60035433600160a060020a0390811691161461082457600080fd5b60045b61082f6106c8565b600481111561083a57fe5b141561084557600080fd5b6004805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a038381169190911791829055166361d3d7a66000604051602001526040518163ffffffff1660e060020a028152600401602060405180830381600087803b15156108b057600080fd5b6102c65a03f115156108c157600080fd5b5050506040518051905015156108d657600080fd5b600080546004549091600160a060020a0390911690634b2ba0dd90604051602001526040518163ffffffff1660e060020a028152600401602060405180830381600087803b151561092657600080fd5b6102c65a03f1151561093757600080fd5b5050506040518051905014151561094d57600080fd5b6004547f7845d5aa74cc410e35571258d954f23b82276e160fe8c188fa80566580f279cc90600160a060020a0316604051600160a060020a03909116815260200160405180910390a15b50565b600160a060020a038083166000908152600260209081526040808320938516835292905220545b92915050565b60015b90565b600160a060020a03811615156109e257600080fd5b60035433600160a060020a039081169116146109fd57600080fd5b6003805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600082820183811015610a3857fe5b8091505b5092915050565b600082821115610a4f57fe5b508082035b929150505600a165627a7a72305820b07dbf26567e4ed8bd90a3afc11c92fc76ba380ca1ffad9948d77246ad46bfb20029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1505227431057
+}

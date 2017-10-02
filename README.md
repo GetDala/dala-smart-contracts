@@ -1,2 +1,8 @@
-# dala-smart-contracts
-Smart contracts for the Dala token sale and ERC20 token
+# Dala Smart Contracts
+Dala smart contracts and tests
+
+## Tokens
+contracts/CentrallyIssuedToken.sol
+
+## Crowdsale
+contracts/AllocatedCrowdsale.sol
