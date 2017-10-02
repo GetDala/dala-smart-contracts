@@ -11,6 +11,8 @@
 
 # Crowdsale
 [AllocatedCrowdsale.sol](https://github.com/GetDala/dala-smart-contracts/blob/master/contracts/AllocatedCrowdsale.sol)
+* The crowdsale is based on the [TokenMarket AllocatedCrowdsale](https://github.com/TokenMarketNet/ico/blob/master/contracts/AllocatedCrowdsale.sol) contract with some alterations to support whitelisting and a dynamic ETH cap per user that increases over time.
 
 # Wallet
 [MultiSigWalletWithDailyLimit.sol](https://github.com/GetDala/dala-smart-contracts/blob/master/contracts/MultiSigWalletWithDailyLimit.sol)
+* The wallet is based on the [Gnosis MultiSigWallet](https://github.com/gnosis/MultiSigWallet/blob/master/contracts/MultiSigWalletWithDailyLimit.sol)
