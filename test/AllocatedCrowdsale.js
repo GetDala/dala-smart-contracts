@@ -56,6 +56,11 @@ contract('AllocatedCrowdsale', function (accounts) {
             .then(() => token.setTransferAgent(wallet.address, true))
             .then(() => token.approve(crowdsale.address, 33000000000000000));
     });
+    it('should have the crowdsale contract authorized to transfer 330 million tokens', function () {
+        return token.allowance(accounts[0], crowdsale.address).then(allowance => {
+            return assert.equal(allowance, CROWDSALE_SUPPLY, 'There were not 330 million tokens authorized for transfer by the crowdsale');
+        });
+    });
     it('should work with the whitelist', function () {
         return crowdsale.addToWhitelist(accounts[5], true).then(() => crowdsale.sendTransaction({ from: accounts[5], value: 1000000000000 })).then(() => {
             assert.equal(true, true);

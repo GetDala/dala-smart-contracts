@@ -24,15 +24,6 @@ contract('CentrallyIssuedToken', function (accounts) {
         return token.balanceOf(accounts[0]).then(balance => {
             return assert.equal(balance, TOTAL_SUPPLY, 'There were not 1 billion tokens in the primary account');
         });
-    })
-    it('should have the crowdsale contract authorized to transfer 330 million tokens', function () {
-        return Promise.all([CentrallyIssuedToken.deployed(), AllocatedCrowdsale.deployed()]).then(results => {
-            var token = results[0];
-            var crowdsale = results[1];
-            return token.allowance(accounts[0], crowdsale.address);
-        }).then(allowance => {
-            return assert.equal(allowance, CROWDSALE_SUPPLY, 'There were not 330 million tokens authorized for transfer by the crowdsale');
-        });
     });
     it('should be able to transfer', function () {
         return token.transfer(accounts[1], TOTAL_SUPPLY).then(() => token.balanceOf(accounts[0])).then(balance => {
