@@ -10,7 +10,7 @@ module.exports = function (deployer, network) {
             Promise.all([CentrallyIssuedToken.deployed(), AllocatedCrowdsale.deployed()]).then(results => {
                 var token = results[0];
                 var crowdsale = results[1];
-                token.approve(AllocatedCrowdsale.address, 330 * Math.pow(10, 6) * Math.pow(10, 18));
+                token.approve(AllocatedCrowdsale.address, 300 * Math.pow(10, 6) * Math.pow(10, 18));
                 token.setTransferAgent(MultiSigWalletWithDailyLimit.address, true);
                 token.setTransferAgent(AllocatedCrowdsale.address, true);
                 token.setTransferAgent(DefaultFinalizeAgent.address, true);
@@ -26,7 +26,7 @@ module.exports = function (deployer, network) {
             Promise.all([CentrallyIssuedToken.deployed(), AllocatedCrowdsale.deployed()]).then(results => {
                 var token = results[0];
                 var crowdsale = results[1];
-                token.approve(AllocatedCrowdsale.address, 330 * Math.pow(10, 6) * Math.pow(10, 18));
+                token.approve(AllocatedCrowdsale.address, 300 * Math.pow(10, 6) * Math.pow(10, 18));
                 token.setTransferAgent(MultiSigWalletWithDailyLimit.address, true);
                 token.setTransferAgent(AllocatedCrowdsale.address, true);
                 token.setTransferAgent(DefaultFinalizeAgent.address, true);
