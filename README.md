@@ -1,7 +1,12 @@
 ## Table of Contents
+* [Audit] (#audit)
 * [Token](#token)
 * [Crowdsale](#crowdsale)
 * [Wallet](#wallet)
+
+# Audit
+[Smart Contract Audit](https://www.iosiro.com/dala-token-sale-audit)
+* The smart contracts were audited by [Iosiro](https://www.iosiro.com) between 5 October 2017 and 13 October 2017.
 
 # Token
 [CentrallyIssuedToken.sol](https://github.com/GetDala/dala-smart-contracts/blob/master/contracts/CentrallyIssuedToken.sol)
