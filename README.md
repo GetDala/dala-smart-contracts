@@ -1,5 +1,5 @@
 ## Table of Contents
-* [Audit] (#audit)
+* [Audit](#audit)
 * [Token](#token)
 * [Crowdsale](#crowdsale)
 * [Wallet](#wallet)
