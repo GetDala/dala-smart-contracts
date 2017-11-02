@@ -32,6 +32,9 @@ contract Crowdsale is Haltable {
   /* Base eth cap */
   uint public baseEthCap;
 
+  /* Max eth per address */
+  uint public maxEthPerAddress;
+
   /* Max investment count when we are still allowed to change the multisig address */
   uint public MAX_INVESTMENTS_BEFORE_MULTISIG_CHANGE = 5;
 
@@ -136,11 +139,16 @@ contract Crowdsale is Haltable {
   // Base eth cap has been changed
   event BaseEthCapChanged(uint newBaseEthCap);
 
-  function Crowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, uint _baseEthCap) {
+  // Max eth per address changed
+  event MaxEthPerAddressChanged(uint newMaxEthPerAddress);
+
+  function Crowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, uint _baseEthCap, uint _maxEthPerAddress) {
 
     owner = msg.sender;
 
     baseEthCap = _baseEthCap;
+
+    maxEthPerAddress = _maxEthPerAddress;
 
     token = FractionalERC20(_token);
 
@@ -267,7 +275,11 @@ contract Crowdsale is Haltable {
     uint timeSinceStart = block.timestamp.sub(startsAt);
     uint currentPeriod = timeSinceStart.div(TIME_PERIOD_IN_SEC).add(1);
     uint ethCap = baseEthCap.mul((2**currentPeriod).sub(1));
-    return ethCap;
+    if(ethCap > maxEthPerAddress){
+      return maxEthPerAddress;
+    }else{
+      return ethCap;
+    }
   }
 
   /**
@@ -449,6 +461,16 @@ contract Crowdsale is Haltable {
       revert();
     baseEthCap = _baseEthCap;
     BaseEthCapChanged(baseEthCap);
+  }
+
+  /**
+   * Set the max eth per address
+   */
+  function setMaxEthPerAddress(uint _maxEthPerAddress) onlyOwner {
+    if(_maxEthPerAddress == 0)
+      revert();
+    maxEthPerAddress = _maxEthPerAddress;
+    MaxEthPerAddressChanged(maxEthPerAddress);
   }
 
   /**

@@ -15,7 +15,8 @@ module.exports = function (deployer, network) {
     const min = 0;
     const beneficiary = '0xdf08f82de32b8d460adbe8d72043e3a7e25a3b39';
     const baseEthCap = 15 * Math.pow(10,18);
-    deployer.deploy(AllocatedCrowdsale, token, pricing, wallet, start, end, min, beneficiary, baseEthCap);
+    const maxEthPerAddress = 65 * Math.pow(10,18);
+    deployer.deploy(AllocatedCrowdsale, token, pricing, wallet, start, end, min, beneficiary, baseEthCap, maxEthPerAddress);
   }
   if(network == 'ropsten'){
     //beneficiary account (same as token owner)
@@ -30,6 +31,7 @@ module.exports = function (deployer, network) {
     const min = 0;
     const beneficiary = '0x8e3e2Ae91926146a932acb242Fc8D3041dA97E73';
     const baseEthCap = 15 * Math.pow(10,18);
-    deployer.deploy(AllocatedCrowdsale, token, pricing, wallet, start, end, min, beneficiary, baseEthCap);
+    const maxEthPerAddress = 65 * Math.pow(10,18);
+    deployer.deploy(AllocatedCrowdsale, token, pricing, wallet, start, end, min, beneficiary, baseEthCap, maxEthPerAddress);
   }
 };

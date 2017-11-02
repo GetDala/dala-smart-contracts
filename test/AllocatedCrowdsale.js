@@ -15,6 +15,7 @@ const start = moment().add(-1, 'days').toDate().getTime() / 1000;
 const end = moment().add(30, 'days').toDate().getTime() / 1000;
 const min = 33000000000000000;
 const baseEthCap = 10000000000000000000;
+const maxEthPerAddress = 20000000000000000000;
 
 var name = 'Dala';
 var symbol = 'DALA';
@@ -43,7 +44,7 @@ contract('AllocatedCrowdsale', function (accounts) {
                 token = _token;
             }).then(() => token.setTransferAgent(accounts[0], true))
             .then(() => token.setUpgradeMaster(wallet.address))
-            .then(() => AllocatedCrowdsale.new(token.address, pricing.address, wallet.address, start, end, min, accounts[0], baseEthCap))
+            .then(() => AllocatedCrowdsale.new(token.address, pricing.address, wallet.address, start, end, min, accounts[0], baseEthCap, maxEthPerAddress))
             .then(_crowdsale => {
                 crowdsale = _crowdsale;
             }).then(() => DefaultFinalizeAgent.new(token.address, crowdsale.address))

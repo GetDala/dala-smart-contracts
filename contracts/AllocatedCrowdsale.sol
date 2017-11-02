@@ -23,8 +23,8 @@ contract AllocatedCrowdsale is Crowdsale {
   /* The party who holds the full token pool and has approve()'ed tokens for this crowdsale */
   address public beneficiary;
 
-  function AllocatedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, address _beneficiary, uint baseEthCap) 
-    Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal, baseEthCap) {
+  function AllocatedCrowdsale(address _token, PricingStrategy _pricingStrategy, address _multisigWallet, uint _start, uint _end, uint _minimumFundingGoal, address _beneficiary, uint baseEthCap, uint maxEthPerAddress) 
+    Crowdsale(_token, _pricingStrategy, _multisigWallet, _start, _end, _minimumFundingGoal, baseEthCap, maxEthPerAddress) {
     beneficiary = _beneficiary;
   }
 
