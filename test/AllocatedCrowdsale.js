@@ -15,7 +15,7 @@ const start = moment().add(-1, 'days').toDate().getTime() / 1000;
 const end = moment().add(30, 'days').toDate().getTime() / 1000;
 const min = 33000000000000000;
 const baseEthCap = 10000000000000000000;
-const maxEthPerAddress = 20000000000000000000;
+const maxEthPerAddress = 50000000000000000000;
 
 var name = 'Dala';
 var symbol = 'DALA';
