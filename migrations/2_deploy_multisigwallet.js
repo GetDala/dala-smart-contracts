@@ -16,4 +16,11 @@ module.exports = function (deployer, network) {
     //address = 0xDEE8ae658dcfbd41E0a03150D4370B3921F96870
     deployer.deploy(MultiSigWalletWithDailyLimit, ['0x4F0A6c734AE57998b02aA9f32674Fa5A37988De6', '0xDEE8ae658dcfbd41E0a03150D4370B3921F96870'], 2, 0);
   }
+  if (network == 'mainnet'){
+    deployer.deploy(MultiSigWalletWithDailyLimit, [
+      '0x99dbe21e3bcc9b86798c6b6687120cbba3efa96f',
+      '0x681202c4fe48ed3801dd1991e84f47fcffda8aff',
+      '0xb57c1ac060c42c650d7838053abed6d15fa9f09f'
+    ], 2, 0);
+  }
 };

@@ -21,4 +21,12 @@ module.exports = function (deployer, network) {
     var decimals = 18;
     deployer.deploy(CentrallyIssuedToken, owner, name, symbol, totalSupply, decimals);
   }
+  if(network == 'mainnet'){
+    var owner = '0x77aff9081ff30cc8c2aec665e331c25c0260b516';
+    var name = 'Dala';
+    var symbol = 'DALA';
+    var totalSupply = 1 * Math.pow(10,9) * Math.pow(10,18);
+    var decimals = 18;
+    deployer.deploy(CentrallyIssuedToken, owner, name, symbol, totalSupply, decimals);
+  }
 };

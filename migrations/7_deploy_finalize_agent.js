@@ -10,4 +10,7 @@ module.exports = function (deployer, network) {
     if (network == 'ropsten') {
         deployer.deploy(DefaultFinalizeAgent, CentrallyIssuedToken.address, AllocatedCrowdsale.address);
     }
+    if (network == 'mainnet') {
+        deployer.deploy(DefaultFinalizeAgent, CentrallyIssuedToken.address, AllocatedCrowdsale.address);
+    }
 }

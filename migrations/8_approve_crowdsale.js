@@ -37,4 +37,20 @@ module.exports = function (deployer, network) {
             });
         });
     }
+    if (network == 'mainnet') {
+        deployer.then(() => {
+            Promise.all([CentrallyIssuedToken.deployed(), AllocatedCrowdsale.deployed()]).then(results => {
+                var token = results[0];
+                var crowdsale = results[1];
+                token.approve(AllocatedCrowdsale.address, 300 * Math.pow(10, 6) * Math.pow(10, 18));
+                token.setTransferAgent(MultiSigWalletWithDailyLimit.address, true);
+                token.setTransferAgent(AllocatedCrowdsale.address, true);
+                token.setTransferAgent(DefaultFinalizeAgent.address, true);
+                token.setTransferAgent('0x77aff9081ff30cc8c2aec665e331c25c0260b516', true);
+                token.setReleaseAgent(DefaultFinalizeAgent.address);
+                token.setUpgradeMaster(MultiSigWalletWithDailyLimit.address);
+                crowdsale.setFinalizeAgent(DefaultFinalizeAgent.address);
+            });
+        });
+    }
 }

@@ -9,4 +9,8 @@ module.exports = function (deployer, network) {
     var weiPerToken = 356666666666667;
     deployer.deploy(FlatPricing, weiPerToken);
   }
+  if(network == 'mainnet'){
+    var weiPerToken = 233333333333333;
+    deployer.deploy(FlatPricing, weiPerToken);
+  }
 };
