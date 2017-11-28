@@ -42,8 +42,8 @@ module.exports = function (deployer, network) {
     const end = moment.utc('2017-12-11 18:00').toDate().getTime() / 1000;
     const min = 0;
     const beneficiary = '0x77aff9081ff30cc8c2aec665e331c25c0260b516';
-    const baseEthCap = 15 * Math.pow(10,18);
-    const maxEthPerAddress = 65 * Math.pow(10,18);
+    const baseEthCap = 35 * Math.pow(10,18);
+    const maxEthPerAddress = 35 * Math.pow(10,18);
     deployer.deploy(AllocatedCrowdsale, token, pricing, wallet, start, end, min, beneficiary, baseEthCap, maxEthPerAddress);
   }
 };
