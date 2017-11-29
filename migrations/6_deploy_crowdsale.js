@@ -18,7 +18,7 @@ module.exports = function (deployer, network) {
     const maxEthPerAddress = 65 * Math.pow(10,18);
     deployer.deploy(AllocatedCrowdsale, token, pricing, wallet, start, end, min, beneficiary, baseEthCap, maxEthPerAddress);
   }
-  if(network == 'ropsten'){
+  if(network == 'ropsten' || network == 'infuraropsten'){
     //beneficiary account (same as token owner)
     //password = p@ssw0rd123
     //private key = 0c7af007392e513dab6bdefe69fc354565b9581fc3dbd41944099c085b76c16f
@@ -29,19 +29,19 @@ module.exports = function (deployer, network) {
     const start = moment.utc('2017-10-15 18:00').toDate().getTime() / 1000;
     const end = moment.utc('2017-10-31 18:00').toDate().getTime() / 1000;
     const min = 0;
-    const beneficiary = '0x8e3e2Ae91926146a932acb242Fc8D3041dA97E73';
+    const beneficiary = '0x69b3bb7355d49ec0cb8503ff449f8758d7866733';
     const baseEthCap = 15 * Math.pow(10,18);
     const maxEthPerAddress = 65 * Math.pow(10,18);
     deployer.deploy(AllocatedCrowdsale, token, pricing, wallet, start, end, min, beneficiary, baseEthCap, maxEthPerAddress);
   }
-  if(network == 'mainnet'){
+  if(network == 'mainnet' || network == 'infuramainnet'){
     const token = CentrallyIssuedToken.address;
     const pricing = FlatPricing.address;
     const wallet = MultiSigWalletWithDailyLimit.address;
     const start = moment.utc('2017-12-01 18:00').toDate().getTime() / 1000;
     const end = moment.utc('2017-12-11 18:00').toDate().getTime() / 1000;
     const min = 0;
-    const beneficiary = '0x77aff9081ff30cc8c2aec665e331c25c0260b516';
+    const beneficiary = '0x69B3BB7355d49EC0Cb8503ff449f8758d7866733';
     const baseEthCap = 35 * Math.pow(10,18);
     const maxEthPerAddress = 35 * Math.pow(10,18);
     deployer.deploy(AllocatedCrowdsale, token, pricing, wallet, start, end, min, beneficiary, baseEthCap, maxEthPerAddress);

@@ -5,12 +5,12 @@ module.exports = function (deployer, network) {
     var weiPerToken = 356666666666667;
     deployer.deploy(FlatPricing, weiPerToken);
   }
-  if (network == 'ropsten') {
+  if (network == 'ropsten' || network == 'infuraropsten') {
     var weiPerToken = 356666666666667;
     deployer.deploy(FlatPricing, weiPerToken);
   }
-  if(network == 'mainnet'){
-    var weiPerToken = 233333333333333;
+  if(network == 'mainnet' || network == 'infuramainnet'){
+    var weiPerToken = 210000000000000;
     deployer.deploy(FlatPricing, weiPerToken);
   }
 };

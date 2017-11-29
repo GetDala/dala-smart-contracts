@@ -230,6 +230,19 @@
       "type": "function"
     },
     {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_maxEthPerAddress",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMaxEthPerAddress",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
       "constant": true,
       "inputs": [],
       "name": "baseEthCap",
@@ -267,6 +280,19 @@
       "constant": true,
       "inputs": [],
       "name": "tokensSold",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "maxEthPerAddress",
       "outputs": [
         {
           "name": "",
@@ -860,6 +886,10 @@
         {
           "name": "_baseEthCap",
           "type": "uint256"
+        },
+        {
+          "name": "_maxEthPerAddress",
+          "type": "uint256"
         }
       ],
       "payable": false,
@@ -975,10 +1005,22 @@
       ],
       "name": "BaseEthCapChanged",
       "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "newMaxEthPerAddress",
+          "type": "uint256"
+        }
+      ],
+      "name": "MaxEthPerAddressChanged",
+      "type": "event"
     }
   ],
   "unlinked_binary": "0x",
   "networks": {},
   "schema_version": "0.0.5",
-  "updated_at": 1505227431055
+  "updated_at": 1511946278559
 }

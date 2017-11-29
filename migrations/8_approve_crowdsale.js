@@ -21,36 +21,40 @@ module.exports = function (deployer, network) {
             });
         });
     }
-    if (network == 'ropsten') {
+    if (network == 'ropsten' || network == 'infuraropsten') {
         deployer.then(() => {
             Promise.all([CentrallyIssuedToken.deployed(), AllocatedCrowdsale.deployed()]).then(results => {
                 var token = results[0];
                 var crowdsale = results[1];
-                token.approve(AllocatedCrowdsale.address, 300 * Math.pow(10, 6) * Math.pow(10, 18));
-                token.setTransferAgent(MultiSigWalletWithDailyLimit.address, true);
-                token.setTransferAgent(AllocatedCrowdsale.address, true);
-                token.setTransferAgent(DefaultFinalizeAgent.address, true);
-                token.setTransferAgent('0x8e3e2Ae91926146a932acb242Fc8D3041dA97E73', true);
-                token.setReleaseAgent(DefaultFinalizeAgent.address);
-                token.setUpgradeMaster(MultiSigWalletWithDailyLimit.address);
-                crowdsale.setFinalizeAgent(DefaultFinalizeAgent.address);
-            });
+                return Promise.all([
+                    token.approve(AllocatedCrowdsale.address, 300 * Math.pow(10, 6) * Math.pow(10, 18)),
+                    token.setTransferAgent(MultiSigWalletWithDailyLimit.address, true),
+                    token.setTransferAgent(AllocatedCrowdsale.address, true),
+                    token.setTransferAgent(DefaultFinalizeAgent.address, true),
+                    token.setTransferAgent('0x69b3bb7355d49ec0cb8503ff449f8758d7866733', true),
+                    token.setReleaseAgent(DefaultFinalizeAgent.address),
+                    token.setUpgradeMaster(MultiSigWalletWithDailyLimit.address),
+                    crowdsale.setFinalizeAgent(DefaultFinalizeAgent.address)
+                ]);
+            }).then(() => console.log('Deploy Successful')).catch(error => console.log('ERROR', error));
         });
     }
-    if (network == 'mainnet') {
+    if (network == 'mainnet' || network == 'infuramainnet') {
         deployer.then(() => {
             Promise.all([CentrallyIssuedToken.deployed(), AllocatedCrowdsale.deployed()]).then(results => {
                 var token = results[0];
                 var crowdsale = results[1];
-                token.approve(AllocatedCrowdsale.address, 300 * Math.pow(10, 6) * Math.pow(10, 18));
-                token.setTransferAgent(MultiSigWalletWithDailyLimit.address, true);
-                token.setTransferAgent(AllocatedCrowdsale.address, true);
-                token.setTransferAgent(DefaultFinalizeAgent.address, true);
-                token.setTransferAgent('0x77aff9081ff30cc8c2aec665e331c25c0260b516', true);
-                token.setReleaseAgent(DefaultFinalizeAgent.address);
-                token.setUpgradeMaster(MultiSigWalletWithDailyLimit.address);
-                crowdsale.setFinalizeAgent(DefaultFinalizeAgent.address);
-            });
+                return Promise.all([
+                    token.approve(AllocatedCrowdsale.address, 300 * Math.pow(10, 6) * Math.pow(10, 18)),
+                    token.setTransferAgent(MultiSigWalletWithDailyLimit.address, true),
+                    token.setTransferAgent(AllocatedCrowdsale.address, true),
+                    token.setTransferAgent(DefaultFinalizeAgent.address, true),
+                    token.setTransferAgent('0x69B3BB7355d49EC0Cb8503ff449f8758d7866733', true),
+                    token.setReleaseAgent(DefaultFinalizeAgent.address),
+                    token.setUpgradeMaster(MultiSigWalletWithDailyLimit.address),
+                    crowdsale.setFinalizeAgent(DefaultFinalizeAgent.address)
+                ]);
+            }).then(() => console.log('Deploy Successful')).catch(error => console.log('ERROR', error));
         });
     }
 }

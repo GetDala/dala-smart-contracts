@@ -7,10 +7,10 @@ module.exports = function (deployer, network) {
     if (network == 'development') {
         deployer.deploy(DefaultFinalizeAgent, CentrallyIssuedToken.address, AllocatedCrowdsale.address);
     }
-    if (network == 'ropsten') {
+    if (network == 'ropsten' || network == 'infuraropsten') {
         deployer.deploy(DefaultFinalizeAgent, CentrallyIssuedToken.address, AllocatedCrowdsale.address);
     }
-    if (network == 'mainnet') {
+    if (network == 'mainnet' || network == 'infuramainnet') {
         deployer.deploy(DefaultFinalizeAgent, CentrallyIssuedToken.address, AllocatedCrowdsale.address);
     }
 }
