@@ -48,12 +48,12 @@ contract BountyDistributor is Ownable {
     function sendTokens(uint _numTokens) onlyOwner {
         uint sent = 0;
         for (uint i = 0; i < bountyHunters.length; i++) {
+            if (sent >= _numTokens) 
+                break;
             if (bounties[i] > 0) {
                  assignTokens(bountyHunters[i], bounties[i]);
                  bounties[i] = 0;
                  sent += 1;
-                 if (sent > _numTokens) 
-                    break;
             }
         }
     }
