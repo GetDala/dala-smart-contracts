@@ -59,3 +59,9 @@ typings/
 
 secret.js
 whitelist*.csv
+presale-and-bonus.csv
+Bounties.csv
+
+Bounties.csv.bak
+
+BountiesShort.csv

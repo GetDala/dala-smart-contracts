@@ -1,0 +1,508 @@
+{
+  "contract_name": "BountyDistributor",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "beneficiary",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_bountyHunter",
+          "type": "address"
+        },
+        {
+          "name": "_bounty",
+          "type": "uint256"
+        }
+      ],
+      "name": "addBountyHunter",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_bountyHunters",
+          "type": "address[]"
+        },
+        {
+          "name": "_bounties",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "addBountyHunters",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "bounties",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_numTokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "sendTokens",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "bountyHunters",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "name": "_beneficiary",
+          "type": "address"
+        },
+        {
+          "name": "_bountyHunters",
+          "type": "address[]"
+        },
+        {
+          "name": "_bounties",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "payable": true,
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Log",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b60405161089038038061089083398101604052808051919060200180519190602001805182019190602001805190910190505b5b60008054600160a060020a03191633600160a060020a03161790555b805182511461006d57600080fd5b60038054600160a060020a03808716600160a060020a031992831617909255600480549286169290911691909117905560018280516100b09291602001906100cf565b5060028180516100c4929160200190610137565b505b505050506101cf565b828054828255906000526020600020908101928215610126579160200282015b828111156101265782518254600160a060020a031916600160a060020a0391909116178255602092909201916001909101906100ef565b5b50610133929150610183565b5090565b828054828255906000526020600020908101928215610172579160200282015b82811115610172578251825591602001919060010190610157565b5b506101339291506101ae565b5090565b6101ab91905b80821115610133578054600160a060020a0319168155600101610189565b5090565b90565b6101ab91905b8082111561013357600081556001016101b4565b5090565b90565b6106b2806101de6000396000f300606060405236156100965763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166338af3eed811461009e5780637e91966c146100cd5780638da5cb5b146100f1578063c96fe7b014610120578063dc2f8744146101b1578063f2fde38b146101d9578063f5c6ca08146101fa578063fc0c546a14610212578063fe605c8714610241575b5b600080fd5b005b34156100a957600080fd5b6100b1610273565b604051600160a060020a03909116815260200160405180910390f35b34156100d857600080fd5b61009c600160a060020a0360043516602435610282565b005b34156100fc57600080fd5b6100b1610306565b604051600160a060020a03909116815260200160405180910390f35b341561012b57600080fd5b61009c60046024813581810190830135806020818102016040519081016040528093929190818152602001838360200280828437820191505050505050919080359060200190820180359060200190808060200260200160405190810160405280939291908181526020018383602002808284375094965061031595505050505050565b005b34156101bc57600080fd5b6101c7600435610390565b60405190815260200160405180910390f35b34156101e457600080fd5b61009c600160a060020a03600435166103b3565b005b341561020557600080fd5b61009c60043561040b565b005b341561021d57600080fd5b6100b16104fd565b604051600160a060020a03909116815260200160405180910390f35b341561024c57600080fd5b6100b160043561050c565b604051600160a060020a03909116815260200160405180910390f35b600454600160a060020a031681565b60005433600160a060020a0390811691161461029d57600080fd5b600180548082016102ae8382610611565b916000526020600020900160005b8154600160a060020a038087166101009390930a928302920219161790555060028054600181016102ed8382610611565b916000526020600020900160005b50829055505b5b5050565b600054600160a060020a031681565b6000805433600160a060020a0390811691161461033157600080fd5b815183511461033f57600080fd5b5060005b82518110156103895761038083828151811061035b57fe5b9060200190602002015183838151811061037157fe5b90602001906020020151610282565b5b600101610343565b5b5b505050565b600280548290811061039e57fe5b906000526020600020900160005b5054905081565b60005433600160a060020a039081169116146103ce57600080fd5b600160a060020a03811615610406576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b5b5b50565b60008054819033600160a060020a0390811691161461042957600080fd5b5060009050805b60015481101561038957600060028281548110151561044b57fe5b906000526020600020900160005b505411156104ec576104b760018281548110151561047357fe5b906000526020600020900160005b9054906101000a9004600160a060020a03166002838154811015156104a257fe5b906000526020600020900160005b505461053e565b60006002828154811015156104c857fe5b906000526020600020900160005b505560019190910190828211156104ec57610389565b5b5b600101610430565b5b5b505050565b600354600160a060020a031681565b600180548290811061051a57fe5b906000526020600020900160005b915054906101000a9004600160a060020a031681565b60005433600160a060020a0390811691161461055957600080fd5b600354600454600160a060020a03918216916323b872dd911684846000604051602001526040517c010000000000000000000000000000000000000000000000000000000063ffffffff8616028152600160a060020a0393841660048201529190921660248201526044810191909152606401602060405180830381600087803b15156105e557600080fd5b6102c65a03f115156105f657600080fd5b50505060405180519050151561030157600080fd5b5b5b5050565b81548183558181151161038957600083815260209020610389918101908301610665565b5b505050565b81548183558181151161038957600083815260209020610389918101908301610665565b5b505050565b61068391905b8082111561067f576000815560010161066b565b5090565b905600a165627a7a723058209282481b1532d609579714c81ce7c928956b795d19769f2464bf158efcfe90cf0029",
+  "networks": {
+    "1513861301485": {
+      "events": {},
+      "links": {},
+      "address": "0xe2da4c069368d834d9231e8f6b13826e65c26cb8",
+      "updated_at": 1513861311526
+    },
+    "1513863060229": {
+      "events": {},
+      "links": {},
+      "address": "0xdaa3fb7ef3a82b82774d450939adbdf48c3753fe",
+      "updated_at": 1513863900806
+    },
+    "1513863970337": {
+      "events": {},
+      "links": {},
+      "address": "0x35f833f3beecaddc54908790aa206337c3ebfaea",
+      "updated_at": 1513863980952
+    },
+    "1513864071123": {
+      "events": {},
+      "links": {},
+      "address": "0xc073736ccf7c2dd1e730f9f4880ae179dc25e0e8",
+      "updated_at": 1513864082195
+    },
+    "1513883678647": {
+      "events": {},
+      "links": {},
+      "address": "0xf642e6e6df95f460546c3e708734e001868a6eea",
+      "updated_at": 1513883697387
+    },
+    "1513883792489": {
+      "events": {},
+      "links": {},
+      "address": "0xfe961c2c09d685fba0981d9ce4a2d91d7698d467",
+      "updated_at": 1513883806279
+    },
+    "1513883860081": {
+      "events": {},
+      "links": {},
+      "address": "0x27390e7e3206ae99722e6cd0e5aef94fbfdb4558",
+      "updated_at": 1513883874014
+    },
+    "1513883910205": {
+      "events": {},
+      "links": {},
+      "address": "0xdac71ce4a3063cb62c5aafde237a9f6cdcde3458",
+      "updated_at": 1513883922286
+    },
+    "1513884013669": {
+      "events": {},
+      "links": {},
+      "address": "0xbb150dc879992853a3aee0fa59977c745800aedd",
+      "updated_at": 1513884026441
+    },
+    "1513884182246": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xdca9ebf7a6983a6dc2edd4e1bdd71f4527b27695",
+      "updated_at": 1513884224648
+    },
+    "1513884351045": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x28b291e74bce603004b52921ec9ad3ddb6f85e44",
+      "updated_at": 1513884375732
+    },
+    "1513884986577": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x28b291e74bce603004b52921ec9ad3ddb6f85e44",
+      "updated_at": 1513885052272
+    },
+    "1513885232841": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x28b291e74bce603004b52921ec9ad3ddb6f85e44",
+      "updated_at": 1513885250274
+    },
+    "1513885641892": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x28b291e74bce603004b52921ec9ad3ddb6f85e44",
+      "updated_at": 1513885654605
+    },
+    "1513885878481": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x28b291e74bce603004b52921ec9ad3ddb6f85e44",
+      "updated_at": 1513885892463
+    },
+    "1513885990272": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x28b291e74bce603004b52921ec9ad3ddb6f85e44",
+      "updated_at": 1513886005068
+    },
+    "1513886599166": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x65042cf11baea10f7a90de27f93b0fea2c7dc205",
+      "updated_at": 1513886912609
+    },
+    "1513887216093": {
+      "events": {
+        "0x31f37e75fc861191c989b3f8011596a4c0dd2bd2b255a7072a7d94fdb895a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "message",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Log",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x28b291e74bce603004b52921ec9ad3ddb6f85e44",
+      "updated_at": 1513887251344
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1513887251344
+}
