@@ -15,7 +15,7 @@
   "name": "wala-dala-smart-contracts",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:GetWala/wala-dala-smart-contracts.git",
+  "repository": "git@github.com:GetDala/dala-smart-contracts.git",
   "author": "Ross McEwan <ross@getwala.com>",
   "license": "MIT",
   "devDependencies": {
